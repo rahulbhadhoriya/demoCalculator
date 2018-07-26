@@ -1,0 +1,20 @@
+{
+    "include": [
+        "./models/models.ts",
+        "./app.ts",
+        "./controllers/*.ts",
+        "./services/*.ts",
+        "./directives/*.ts"
+    ],
+    "compileOnSave": true,
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "target": "es5",
+        "jsx": "preserve",
+        "removeComments": true,
+        "outFile": "app.combined.js",
+        "declaration": false
+    
+}
+}
