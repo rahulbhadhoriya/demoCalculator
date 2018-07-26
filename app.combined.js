@@ -1,21 +1,29 @@
 var App;
 (function (App) {
-    App.appName = 'app';
+    App.appName = "app";
 })(App || (App = {}));
 function configFn($stateProvider, $urlRouterProvider, $httpProvider, baseUrl) {
-    $httpProvider.defaults.headers.common = { 'X-Requested-With': 'XMLHttpRequest' };
-    $urlRouterProvider.otherwise('/demo');
-    $stateProvider
-        .state('demo', {
-        url: '/demo',
+    $httpProvider.defaults.headers.common = {
+        "X-Requested-With": "XMLHttpRequest"
+    };
+    $urlRouterProvider.otherwise("/demo");
+    $stateProvider.state("demo", {
+        url: "/demo",
         controller: App.Controllers.DemoController,
-        controllerAs: 'ctrl',
-        templateUrl: 'templates/demo.html'
+        controllerAs: "ctrl",
+        template: "\n            <div class=\"container\">\n        <div class=\"screen\">\n            <table>\n                <tr>\n                    <td class=\"entry\" colspan=\"4\" ng-if=\"!ctrl.output\">{{ctrl.num1}}{{ctrl.selectedOperation}}{{ctrl.num2}}</td>\n                    <td class=\"entry\" colspan=\"4\" ng-if=\"ctrl.output\" >{{ctrl.output}}</td>\n                </tr>\n                <tr>\n                    <td><input type=\"button\" value=\"7\" class=\"button num\" ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"8\" class=\"button num\" ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"9\" class=\"button num\" ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><button value=\"x\" class=\"button operators\"       ng-click=\"ctrl.selectOperation($event)\">X</button></td>\n                </tr>\n                <tr>\n                    <td><input type=\"button\" value=\"4\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"5\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\" ></td>\n                    <td><input type=\"button\" value=\"6\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"-\" class=\"button operators\"  ng-click=\"ctrl.selectOperation($event)\"></td>\n                </tr>\n                \n                <tr>\n                    <td><input type=\"button\" value=\"1\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"2\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"3\" class=\"button num\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"+\" class=\"button operators\"  ng-click=\"ctrl.selectOperation($event)\"></td>\n                </tr>\n                <tr>\n                    <td colspan=\"2\"><input type=\"button\" value=\"0\" class=\"button num zero\"  ng-click=\"ctrl.setValues($event)\"></td>\n                    <td><input type=\"button\" value=\"AC\" class=\"button decimal\"  ng-click=\"ctrl.clearButton()\"></td>\n                    <td><input type=\"button\" value=\"=\" class=\"button equal\"  ng-click=\"ctrl.getResult(ctrl.num1,ctrl.num2)\"></td>\n                </tr>\n            </table>\n        </div>\n        </div>\n            "
     });
 }
-angular.module(App.appName, ['ui.router'])
-    .constant('baseUrl', window.baseUrl + 'api')
-    .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'baseUrl', configFn]);
+angular
+    .module(App.appName, ["ui.router"])
+    .constant("baseUrl", window.baseUrl + "api")
+    .config([
+    "$stateProvider",
+    "$urlRouterProvider",
+    "$httpProvider",
+    "baseUrl",
+    configFn
+]);
 var App;
 (function (App) {
     var Controllers;
