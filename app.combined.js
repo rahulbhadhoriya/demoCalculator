@@ -10,7 +10,7 @@ function configFn($stateProvider, $urlRouterProvider, $httpProvider, baseUrl) {
         url: '/demo',
         controller: App.Controllers.DemoController,
         controllerAs: 'ctrl',
-        templateUrl: '/templates/demo.html'
+        templateUrl: 'templates/demo.html'
     });
 }
 angular.module(App.appName, ['ui.router'])

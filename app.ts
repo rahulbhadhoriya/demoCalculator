@@ -20,7 +20,7 @@ function configFn(
             url: '/demo',
             controller:App.Controllers.DemoController,
             controllerAs:'ctrl',
-            templateUrl:'demoCalculator/templates/demo.html'
+            templateUrl:'templates/demo.html'
         })
 }
 
